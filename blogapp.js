@@ -7,6 +7,9 @@ const express = require("express");
 const app = express();
 
 const server = http.createServer(app);
+// const customerDB = require("./customer");
+// const membersDB = require("./members");
+// const servicesDB = require("./services");
 
 app.get("/", (req, res) => {
   res.send("Homepage");
@@ -26,10 +29,6 @@ app.get("/shop", (req, res) => {
 
 app.get("/gallery", (req, res) => {
   res.send("SHOP SHOP SHOP!!!!!!!");
-});
-
-app.get("*", (req, res) => {
-  res.send("This is not the home page");
 });
 
 server.listen(port, hostname, () => {
