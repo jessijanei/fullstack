@@ -3,8 +3,16 @@ const express = require("express");
 
 // const hostname = "127.0.0.1";
 const port = process.env.port || 3000;
+
 const models = require("./models");
 const bcrypt = require("./bcrypt");
+
+const morgan = require("morgan");
+const logger = morgan("tiny");
+app.use(logger);
+
+const helmet = require("helmet");
+app.use(helmet());
 
 const app = express();
 
@@ -12,6 +20,12 @@ const server = http.createServer(app);
 // const customerDB = require("./customer");
 // const membersDB = require("./members");
 // const servicesDB = require("./services");
+app.all("*", (req, res) => {
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
+
+//ROUTE HANDLERS ROUTE HANDLERS ROUTE HANDLERS//
 
 app.get("/", (req, res) => {
   res.render("index");
