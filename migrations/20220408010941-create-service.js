@@ -1,42 +1,48 @@
-'use strict';
+"use strict";
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('services', {
+    await queryInterface.createTable("services", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       service_name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       service_type: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       price: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       length_of_service: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       password: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
+    });
+
+    await queryInterface.addConstraint("Users", {
+      fields: ["email"],
+      type: "unique",
+      name: "email_unique_constraint",
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('services');
-  }
+    await queryInterface.dropTable("services");
+  },
 };
