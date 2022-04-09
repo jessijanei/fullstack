@@ -14,7 +14,7 @@ const server = http.createServer(app);
 // const servicesDB = require("./services");
 
 app.get("/", (req, res) => {
-  res.send("Homepage");
+  res.render("index");
 });
 
 app.post("/login", (req, res) => {

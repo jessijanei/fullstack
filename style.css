@@ -42,10 +42,6 @@ h1 {
   border-style: none;
 }
 
-.btn:hover {
-  background-color: none;
-}
-
 .rounded {
   margin-top: 8%;
   animation: fadeIn 4s;
