@@ -38,7 +38,7 @@ module.exports = {
       },
     });
 
-    await queryInterface.addConstraint("Users", {
+    await queryInterface.addConstraint("customers", {
       fields: ["email"],
       type: "unique",
       name: "email_unique_constraint",
