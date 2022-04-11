@@ -4,7 +4,7 @@ const express = require("express");
 // const hostname = "127.0.0.1";
 const port = process.env.port || 3000;
 
-const models = require("./models");
+const models = require("../../models");
 const bcrypt = require("./bcrypt");
 
 const morgan = require("morgan");
@@ -25,10 +25,21 @@ app.all("*", (req, res) => {
   next();
 });
 
+app.use(express.static('public'));
 //ROUTE HANDLERS ROUTE HANDLERS ROUTE HANDLERS//
+
+
 
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+const buttonLogIN = document.getElementById("#btn-login");
+buttonLogIN.addEventListener("click", (event) => {
+  
+app.get("/login", (req, res) => {
+  res.render("index");
+});
 });
 
 app.post("/login", (req, res) => {

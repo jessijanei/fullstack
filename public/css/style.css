@@ -94,3 +94,10 @@ h1 {
     opacity: 1;
   }
 }
+
+
+/* Log In Page */
+
+.form-label {
+  justify-content: right;
+}
