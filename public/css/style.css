@@ -15,11 +15,12 @@ body {
 }
 body:before,
 body:after {
-  position: absolute;
+  position: absolute; 
   content: "";
   top: 0px;
   height: 100%;
   width: 33.33%;
+  z-index: -5;
 }
 body:before {
   left: 0px;
@@ -101,8 +102,9 @@ h1 {
   justify-content: right;
 }
 
-#btn-gallery {
-  z-index: 1;
+.multi-btn {
+  position: absolute;
+  width: 500px;
 }
 
 
@@ -111,11 +113,14 @@ h1 {
 .baby-parents,
 .third-row
 {
-  margin-top: 20%;
+  margin-top: 8%;
   
 }
 
 .first-row {
-  margin-top: 45%;
+  margin-top: 30%;
 }
 
+img {
+  border-radius: 3%;
+}
