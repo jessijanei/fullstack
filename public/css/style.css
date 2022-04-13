@@ -37,7 +37,6 @@ h1 {
 }
 
 .btn {
-  justify-content: center;
   background-color: rgb(56, 13, 56);
   border-style: none;
 }
@@ -100,6 +99,10 @@ h1 {
 
 .form-label {
   justify-content: right;
+}
+
+#btn-gallery {
+  z-index: 1;
 }
 
 

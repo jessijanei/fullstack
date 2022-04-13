@@ -31,12 +31,13 @@ app.all("*", (req, res) => {
   console.log(`${req.method} ${req.path}`);
   next();
 });
+
+
 app.use(express)
 app.use(express.static('public'));
 //ROUTE HANDLERS ROUTE HANDLERS ROUTE HANDLERS//
-
-
-
+//ROUTE HANDLERS ROUTE HANDLERS ROUTE HANDLERS//
+//ROUTE HANDLERS ROUTE HANDLERS ROUTE HANDLERS//
 app.get("/", (req, res) => {
   res.render("home");
 });
@@ -44,6 +45,10 @@ app.get("/", (req, res) => {
 
 app.get("/login", (req, res) => {
   res.render("login");
+});
+
+app.get("/gallery", (req, res) => {
+  res.render("gallery");
 });
 
 
@@ -113,9 +118,7 @@ app.get("/shop", (req, res) => {
   res.send("SHOP SHOP SHOP!!!!!!!");
 });
 
-app.get("/gallery", (req, res) => {
-  res.send("SHOP SHOP SHOP!!!!!!!");
-});
+
 
 app.listen(port, () => {
   console.log(`Server running at ${port}`);
