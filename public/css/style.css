@@ -101,3 +101,18 @@ h1 {
 .form-label {
   justify-content: right;
 }
+
+
+/*GALLERY*/
+.baby-cucumber,
+.baby-parents,
+.third-row
+{
+  margin-top: 20%;
+  
+}
+
+.first-row {
+  margin-top: 45%;
+}
+
