@@ -1,3 +1,6 @@
+//LIBRARIES LIBRARIES//
+//LIBRARIES LIBRARIES//
+//LIBRARIES LIBRARIES//
 // const http = require("http");
 const express = require("express");
 
@@ -11,37 +14,36 @@ const morgan = require("morgan");
 const logger = morgan("tiny");
 
 const app = express();
-const es6Rendered = require('express-es6-template-engine')
+const es6Rendered = require("express-es6-template-engine");
 
 app.use(logger);
 
 const helmet = require("helmet");
 app.use(helmet());
 
-
-app.engine('html', es6Rendered);
-app.set('views', 'views')
-app.set('view engine', 'html')
-
+app.engine("html", es6Rendered);
+app.set("views", "views");
+app.set("view engine", "html");
 
 // const customerDB = require("./customer");
 // const membersDB = require("./members");
 // const servicesDB = require("./services");
-app.all("*", (req, res) => {
+app.all("*", (req, res, next) => {
   console.log(`${req.method} ${req.path}`);
   next();
 });
 
-
-app.use(express)
-app.use(express.static('public'));
+app.use(express.json());
+app.use(express.static("public"));
 //ROUTE HANDLERS ROUTE HANDLERS ROUTE HANDLERS//
 //ROUTE HANDLERS ROUTE HANDLERS ROUTE HANDLERS//
 //ROUTE HANDLERS ROUTE HANDLERS ROUTE HANDLERS//
+//GET GET GET//
+//GET GET GET//
+//GET GET GET//
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("index");
 });
-
 
 app.get("/login", (req, res) => {
   res.render("login");
@@ -51,7 +53,20 @@ app.get("/gallery", (req, res) => {
   res.render("gallery");
 });
 
+app.get("/about-us", (req, res) => {
+  res.render("about-us");
+});
 
+app.get("/shop", (req, res) => {
+  res.render("shop");
+});
+
+app.get("/reviews", (req, res) => {
+  res.render("reviews");
+});
+//POST POST POST POST//
+//POST POST POST POST//
+//POST POST POST POST//
 app.post("/api/login", (req, res) => {
   const { username, email, password } = req.body;
   if (!username || !email || !password) {
@@ -60,26 +75,26 @@ app.post("/api/login", (req, res) => {
   }
 
   // bcrypt.hash(password, 5, (err, hash) => {
-    models.User.create({
-      username: username,
-      email: email,
-      password: password,
-    })
-      .then((user) => {
-        res.json({
-          success: true,
-          user_id: user.id,
-        });
-      })
-      .catch((e) => {
-        let errors = [];
-
-        e.errors.forEach((error) => {
-          errors.push(error.message);
-        });
-
-        res.json({ error: errors });
+  models.User.create({
+    username: username,
+    email: email,
+    password: password,
+  })
+    .then((user) => {
+      res.json({
+        success: true,
+        user_id: user.id,
       });
+    })
+    .catch((e) => {
+      let errors = [];
+
+      e.errors.forEach((error) => {
+        errors.push(error.message);
+      });
+
+      res.json({ error: errors });
+    });
   // });
 });
 
@@ -103,22 +118,12 @@ app.post("/api/login", (req, res) => {
     //   }
     // });
     if (password == user.password) {
-          res.json({ user_id: user.id, success: true });
-        } else {
-          res.json({ error: "incorrect password" });
-        }
+      res.json({ user_id: user.id, success: true });
+    } else {
+      res.json({ error: "incorrect password" });
+    }
   };
 });
-
-app.get("/register-form", (req, res) => {
-  res.send("Log In");
-});
-
-app.get("/shop", (req, res) => {
-  res.send("SHOP SHOP SHOP!!!!!!!");
-});
-
-
 
 app.listen(port, () => {
   console.log(`Server running at ${port}`);
